@@ -1,9 +1,8 @@
+server/keys/private.pem
 __pycache__/
 *.pyc
-env/
-.env
-admin/admin.db
-server/migrations/
-dist/
 build/
-*.log
+dist/
+*.egg-info/
+.env
+cache.bin
