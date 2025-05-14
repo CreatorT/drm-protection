@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: licenses
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6-alpine
+    command: ["redis-server","--save","900","1"]
+
+  license-server:
+    build: ../server
+    environment:
+      DATABASE_URL: postgresql://user:pass@postgres/licenses
+      HMAC_SECRET: supersecretkey
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "5000:5000"
+
+  admin-ui:
+    build: ../admin
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
