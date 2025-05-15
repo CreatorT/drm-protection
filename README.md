@@ -139,8 +139,6 @@ We welcome contributions! Please follow these steps:
 4. Push to your fork: `git push origin feature/YourFeature`.
 5. Open a Pull Request against `main`.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines and our Code of Conduct.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
